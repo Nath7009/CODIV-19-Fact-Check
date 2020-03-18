@@ -16,10 +16,11 @@ une première version 1 à sortir rapidement et ensuite l'équipe dev continue �
 WP. 2: Formation de la Task force et mobilisation de la communauté
 WP. 3: Formation de l'équipe Data Analytics pour sortir des insights à partager avec la communauté
 
-Objectif de la plateforme :
+Objectifs de la plateforme :
 
 - Lister les faits donnés par les utilisateurs
 - Permettre aux utilisateurs de donner leur avis sur les faits
 - Permettre aux utilisateurs de noter les faits
 - Ajout automatique des faits ?
 - Détection des duplicatas ?
+- Tri des faits en fonction de la nouveauté, les plus vrais, les plus faux
