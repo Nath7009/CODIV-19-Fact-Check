@@ -1,45 +1,36 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Router } from 'react-router-dom';
+import { createBrowserHistory } from 'history';
+import { Chart } from 'react-chartjs-2';
+import { ThemeProvider } from '@material-ui/styles';
+import validate from 'validate.js';
 
-class App extends Component{
+import { chartjs } from './helpers';
+import theme from './theme';
+import 'react-perfect-scrollbar/dist/css/styles.css';
+import './assets/scss/index.scss';
+import validators from './common/validators';
+import Routes from './Routes';
 
-  constructor(props) {
-    super(props);
-    this.state = { backResponse: "" };
-  }
+const browserHistory = createBrowserHistory();
 
-  callBack() {
-    fetch("http://localhost:9000/testBack")
-        .then(res => res.text())
-        .then(res => this.setState({ backResponse: res }));
-  }
+Chart.helpers.extend(Chart.elements.Rectangle.prototype, {
+  draw: chartjs.draw
+});
 
-  componentWillMount() {
-    this.callBack();
-  }
+validate.validators = {
+  ...validate.validators,
+  ...validators
+};
 
-  render(){
-    return  (
-      <div  className="App">
-            <header  className="App-header">
-                <img  src={logo}  className="App-logo"  alt="logo"  />
-                <p>
-                    Edit  <code>src/App.js</code>  and  save  to  rel2oad.
-                </p>
-                <p className="App-intro">;{this.state.backResponse}</p>
-                <a
-                    className="App-link"
-                    href="https://reactjs.org"
-                    target="_blank"
-                    rel="noopener  noreferrer"
-                >
-                    Learn  React
-                </a>
-            </header>
-        </div>
+export default class App extends Component {
+  render() {
+    return (
+      <ThemeProvider theme={theme}>
+        <Router history={browserHistory}>
+          <Routes />
+        </Router>
+      </ThemeProvider>
     );
   }
 }
-
-export default App;
